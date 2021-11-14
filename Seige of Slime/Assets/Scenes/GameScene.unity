@@ -2067,7 +2067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552675064}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4, y: 5.72, z: 11.195027}
+  m_LocalPosition: {x: -1.501, y: 5.72, z: 11.195027}
   m_LocalScale: {x: 2.0934694, y: 2.0934694, z: 2.0934694}
   m_Children: []
   m_Father: {fileID: 245013155}
@@ -3819,8 +3819,8 @@ MonoBehaviour:
   nextNode: {fileID: 5330801}
   followingNode: 1
   health: 100
-  speedMod: 3
-  velocity: 1.5
+  speedMod: 2
+  velocity: 3
 --- !u!58 &1769836961
 CircleCollider2D:
   m_ObjectHideFlags: 0
