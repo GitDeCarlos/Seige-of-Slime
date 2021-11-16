@@ -12,9 +12,16 @@ public class attackerAi : MonoBehaviour
     
     // Attacker's stats
     public int health = 100;
+    public int damage = 20;
     public float speedMod = 1.0f;
     public float velocity = 0.1f;
     
+    private void Start()
+    {
+        nextNode = FindObjectOfType<pathNode>().gameObject;
+        
+    }
+
     void Update()
     {
         if (!followingNode)
@@ -44,10 +51,8 @@ public class attackerAi : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
         if (String.Compare(other.name, "Target Node") == 0)
         {
-            Debug.Log("Collision with node");
             if (nextNode.GetComponent<pathNode>().tailNode)
             {
                 followingNode = false;
