@@ -19,5 +19,26 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(slimeGreen, spawnerPos);
         }
+
+        if (Input.GetKey("1"))
+        {
+            GameObject temp = Instantiate(slimeGreen, spawnerPos);
+            temp.GetComponent<AttackerAi>().nodeIndex = 1;
+        }
+        if (Input.GetKey("2"))
+        {
+            GameObject temp = Instantiate(slimeGreen, spawnerPos);
+            temp.GetComponent<AttackerAi>().nodeIndex = 2;
+        }
+        if (Input.GetKey("3"))
+        {
+            GameObject temp = Instantiate(slimeGreen, spawnerPos);
+            temp.GetComponent<AttackerAi>().nodeIndex = 5;
+        }
+        if (Input.GetKey("4"))
+        {
+            GameObject temp = Instantiate(slimeGreen, spawnerPos);
+            temp.GetComponent<AttackerAi>().nodeIndex = 11;
+        }
     }
 }

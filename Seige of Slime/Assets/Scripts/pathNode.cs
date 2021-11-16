@@ -13,7 +13,10 @@ public class pathNode : MonoBehaviour
     
     // Tells attackers the necessary alignment to find node
     // true for x, false for y
-    public bool align; 
+    public bool align;
 
-
+    public void Start()
+    {
+        Debug.Log(this.name);
+    }
 }

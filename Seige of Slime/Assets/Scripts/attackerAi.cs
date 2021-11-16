@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEditor.U2D.Path;
 using UnityEngine;
 
-public class attackerAi : MonoBehaviour
+public class AttackerAi : MonoBehaviour
 {
     // Holds info for where to move to next
     public GameObject nextNode;
+    public int nodeIndex = 1;
     public bool followingNode = true;
     
     // Attacker's stats
@@ -18,7 +19,7 @@ public class attackerAi : MonoBehaviour
     
     private void Start()
     {
-        nextNode = FindObjectOfType<pathNode>().gameObject;
+        nextNode = GameObject.Find("Target Node " + nodeIndex);
         
     }
 
@@ -51,7 +52,8 @@ public class attackerAi : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (String.Compare(other.name, "Target Node") == 0)
+        //Debug.Log(other.name);
+        if (String.Compare(other.name, "Target Node " + nodeIndex) == 0)
         {
             if (nextNode.GetComponent<pathNode>().tailNode)
             {
@@ -65,5 +67,6 @@ public class attackerAi : MonoBehaviour
     void UpdateNode()
     {
         this.nextNode = nextNode.gameObject.GetComponent<pathNode>().nextNode;
+        nodeIndex++;
     }
 }

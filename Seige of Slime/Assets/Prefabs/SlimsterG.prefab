@@ -145,10 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextNode: {fileID: 0}
+  nodeIndex: 1
   followingNode: 1
   health: 100
   damage: 5
-  speedMod: 2
+  speedMod: 4
   velocity: 3
 --- !u!50 &7735927646608156452
 Rigidbody2D:

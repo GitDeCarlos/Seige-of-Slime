@@ -21,6 +21,11 @@ public class HealthBar : MonoBehaviour
     
     public void UpdateHealth(int health)
     {
+        if (health < 0)
+        {
+            bar.localScale = new Vector3(0f, 1f);
+            return;
+        }
         float ratio = (float)health / (float)totalHealth;
         bar.localScale = new Vector3(ratio, 1f);
     }

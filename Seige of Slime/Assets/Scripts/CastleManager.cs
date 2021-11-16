@@ -35,7 +35,7 @@ public class CastleManager : MonoBehaviour
         switch (other.name)
         {
             case "SlimsterG(Clone)": 
-                damage(other.GetComponent<attackerAi>().damage);
+                damage(other.GetComponent<AttackerAi>().damage);
                 Destroy(other.gameObject);
                 break;
         }
