@@ -6,10 +6,10 @@ using UnityEngine;
 public class CastleManager : MonoBehaviour
 {
     public HealthBar healthBar;
-    private int health = 100;
+    private int health = 10000;
 
     public HealthBar armorBar;
-    private int armor = 100;
+    private int armor = 10000;
 
     public void Start()
     {
@@ -32,13 +32,19 @@ public class CastleManager : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.name)
+        if (other.GetComponent<AttackerAi>() != null)
+        {
+            damage(other.GetComponent<AttackerAi>().damage);
+            Destroy(other.gameObject);
+        }
+        
+        /*switch (other.name)
         {
             case "SlimsterG(Clone)": 
                 damage(other.GetComponent<AttackerAi>().damage);
                 Destroy(other.gameObject);
                 break;
-        }
+        }*/
     }
 
     public void damage(int d)

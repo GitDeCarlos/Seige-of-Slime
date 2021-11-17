@@ -15,8 +15,5 @@ public class pathNode : MonoBehaviour
     // true for x, false for y
     public bool align;
 
-    public void Start()
-    {
-        Debug.Log(this.name);
-    }
+    
 }
