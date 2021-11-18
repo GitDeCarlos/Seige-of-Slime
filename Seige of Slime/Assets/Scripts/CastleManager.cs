@@ -6,10 +6,10 @@ using UnityEngine;
 public class CastleManager : MonoBehaviour
 {
     public HealthBar healthBar;
-    private int health = 10000;
+    public int health = 100;
 
     public HealthBar armorBar;
-    private int armor = 10000;
+    public int armor = 100;
 
     public void Start()
     {
@@ -34,8 +34,8 @@ public class CastleManager : MonoBehaviour
     {
         if (other.GetComponent<AttackerAi>() != null)
         {
-            damage(other.GetComponent<AttackerAi>().damage);
-            Destroy(other.gameObject);
+            this.Damage(other.GetComponent<AttackerAi>().damage);
+            other.gameObject.GetComponent<AttackerAi>().Kill();
         }
         
         /*switch (other.name)
@@ -47,7 +47,7 @@ public class CastleManager : MonoBehaviour
         }*/
     }
 
-    public void damage(int d)
+    public void Damage(int d)
     {
         if (armor > 0)
         {
