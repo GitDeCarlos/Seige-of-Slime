@@ -14,6 +14,11 @@ public class ProjectileArrow : MonoBehaviour
 
     private void Update()
     {
+        if (attacker == null)
+        {
+            Destroy(gameObject);
+        }
+        
         targetPosition = attacker.transform.position;
         Vector3 moveDir = (targetPosition - transform.position).normalized;
 

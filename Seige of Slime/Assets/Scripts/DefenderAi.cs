@@ -6,6 +6,7 @@ using UnityEngine;
 public class DefenderAi : MonoBehaviour
 {
     private Vector3 projectileShootFromPosition;
+    public GameObject rangeArea;
     public GameObject pfProjectileArrow;
     
     // Timer Stuff
@@ -18,6 +19,7 @@ public class DefenderAi : MonoBehaviour
     private void Awake()
     {
         projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
+        //rangeArea = GameObject.Find("RangeArea");
     }
 
     private void Update()
@@ -54,5 +56,15 @@ public class DefenderAi : MonoBehaviour
     {
         AttackerAi attacker = GameObject.Find("GameManager").GetComponent<GameManager>().GetClosestAttackerAi(transform.position, range);
         return attacker;
+    }
+
+    public void Select()
+    {
+        rangeArea.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void Deselect()
+    {
+        rangeArea.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
