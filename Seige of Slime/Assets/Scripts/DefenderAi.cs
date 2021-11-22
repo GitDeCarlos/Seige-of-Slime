@@ -25,7 +25,6 @@ public class DefenderAi : MonoBehaviour
     private void Update()
     {
         
-        GameObject rangeArea = GameObject.Find("RangeArea");
         rangeArea.transform.localScale = new Vector3(range, range, 1);
 
         if (Input.GetMouseButtonDown(0))
