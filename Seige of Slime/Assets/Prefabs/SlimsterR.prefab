@@ -364,7 +364,7 @@ MonoBehaviour:
   nextNode: {fileID: 0}
   nodeIndex: 1
   followingNode: 1
-  health: 100
+  health: 150
   damage: 10
   speedMod: 1
   velocity: 5

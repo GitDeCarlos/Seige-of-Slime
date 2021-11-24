@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -19,93 +20,112 @@ public class SpawnManager : MonoBehaviour
     private float countdown = 2f;
 
     private int waveNumber = 1;
+    private bool readyToStart = false;
+    private bool activeWave = false;
 
-    String[] wave1 =
-    {
-        "3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3",
-        "5", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2"
-    };
-    
-    String[] wave2 =
-    {
-        "3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3", "g1", "0.3",
-        "5", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2", "r2", "0.2"
-    };
-
-
-    private List<String[]> waves = new List<string[]>();
-
-
-    private bool startWave = true;
-
-    private void Start()
-    {
-        /*for (int i = 0; i < 5; i++)
-            wave1.Enqueue(slimeGreen);
-        
-        for (int i = 0; i < 5; i++)
-            wave1.Enqueue(slimeRed);
-        
-        for (int i = 0; i < 20; i++)
-            wave2.Enqueue(slimeGreen);*/
-        waves.Add(wave1);
-        waves.Add(wave2);
-    }
+    public GameObject waveCounter;
 
     void Update()
     {
-        if (startWave)
+        if (readyToStart)
         {
-            Debug.Log("wave " + waveNumber);
-            StartCoroutine(SpawnWave(waveNumber));
-            waveNumber++;
-
-            startWave = false;
-
-        }
-        /*if (countdown <= 0f)
-    {
-        StartCoroutine(SpawnWave(waveNumber));
-        
-        
-        countdown = timeBetweenWaves;
-    }
-
-    countdown -= Time.deltaTime;*/
-    }
-
-    IEnumerator SpawnWave(int i)
-    {
-        if (waveNumber > 2)
-            yield break;
-
-        foreach (var q in waves[i-1])
-        {Debug.Log(q);
-            if (q[0] == 'g' || q[0] == 'r' || q[0] == 'b' || q[0] == 'j')
-            { 
-                int spawerNode = Int32.Parse(q[1] + "");
-                switch (q[0])
-                {
-                    case 'g':
-                        SpawnAttacker_GreenSlime(spawerNode);
-                        break;
-                    case 'r':
-                        SpawnAttacker_RedSlime(spawerNode);
-                        break;
-                }
-            }
-            else
+            activeWave = true;
+            waveCounter.GetComponent<TextMeshProUGUI>().text = waveNumber + "";
+            switch (waveNumber)
             {
-                float delay = float.Parse(q);
-                //StartCoroutine(delayTimer(delay));
-                yield return new WaitForSeconds(delay);
+                case 1:
+                    StartCoroutine(SpawnWave1(true));
+                    break;
+                case 2:
+                    StartCoroutine(SpawnWave2(true));
+                    break;
+                case 3:
+                    StartCoroutine(SpawnWave3(true));
+                    break;
+                case 4:
+                    StartCoroutine(SpawnWave4(true));
+                    break;
+                case 5:
+                    StartCoroutine(SpawnWave5(true));
+                    break;
             }
+            waveNumber++;
+            readyToStart = false;
+
+        }
+        
+    }
+    
+    IEnumerator SpawnWave1(bool root)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            SpawnAttacker_GreenSlime(1);
+            yield return new WaitForSeconds(0.3f);
         }
 
-        waveNumber++;
-        //yield return new WaitForSeconds(4);
+        if (root)
+        {
+            activeWave = false;
+        }
     }
-
+    
+    IEnumerator SpawnWave2(bool root)
+    {
+        StartCoroutine(SpawnWave1(false));
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnAttacker_GreenSlime(2);
+            yield return new WaitForSeconds(0.3f);
+        }
+        
+        if (root)
+        {
+            activeWave = false;
+        }
+    }
+    
+    IEnumerator SpawnWave3(bool root)
+    {
+        StartCoroutine(SpawnWave2(false));
+        yield return new WaitForSeconds(10f);
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnAttacker_RedSlime(2);
+            yield return new WaitForSeconds(0.3f);
+        }
+        if (root)
+        {
+            activeWave = false;
+        }
+    }
+    
+    IEnumerator SpawnWave4(bool root)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            SpawnAttacker_GreenSlime(1);
+            yield return new WaitForSeconds(0.3f);
+        }
+        if (root)
+        {
+            activeWave = false;
+        }
+    }
+    
+    IEnumerator SpawnWave5(bool root)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            SpawnAttacker_GreenSlime(1);
+            yield return new WaitForSeconds(0.3f);
+        }
+        if (root)
+        {
+            activeWave = false;
+        }
+    }
+    
     private void SpawnAttacker_GreenSlime(int spawnerNode)
     {
         GameObject temp = Instantiate(slimeGreen, NodeToSpawner(spawnerNode).position, Quaternion.identity);
@@ -129,8 +149,11 @@ public class SpawnManager : MonoBehaviour
         else return spawnerPos11;
     }
 
-    IEnumerator delayTimer(int delay)
+    public void NextWave()
     {
-        yield return new WaitForSeconds(delay);
+        if (!activeWave)
+        {
+            readyToStart = true;
+        }
     }
 }
