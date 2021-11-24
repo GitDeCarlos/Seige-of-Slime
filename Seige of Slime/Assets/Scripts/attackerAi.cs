@@ -17,6 +17,8 @@ public class AttackerAi : MonoBehaviour
     public float speedMod = 1.0f;
     public float velocity = 0.1f;
     public bool isDead;
+
+    public int killReward = 1;
     
     public HealthBar healthBar;
     
@@ -88,6 +90,10 @@ public class AttackerAi : MonoBehaviour
     public void Damage(int damage)
     {
         health -= damage;
+        if (health < 1)
+        {
+            MoneyManager.GiveMoney(killReward);
+        }
     }
 
     public void Kill()

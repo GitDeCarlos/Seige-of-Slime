@@ -25,6 +25,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject waveCounter;
 
+    private int waveReward = 100;
+
     void Update()
     {
         if (readyToStart)
@@ -63,11 +65,7 @@ public class SpawnManager : MonoBehaviour
             SpawnAttacker_GreenSlime(1);
             yield return new WaitForSeconds(0.3f);
         }
-
-        if (root)
-        {
-            activeWave = false;
-        }
+        rootAction(root);
     }
     
     IEnumerator SpawnWave2(bool root)
@@ -78,26 +76,19 @@ public class SpawnManager : MonoBehaviour
             SpawnAttacker_GreenSlime(2);
             yield return new WaitForSeconds(0.3f);
         }
-        
-        if (root)
-        {
-            activeWave = false;
-        }
+        rootAction(root);
     }
     
     IEnumerator SpawnWave3(bool root)
     {
         StartCoroutine(SpawnWave2(false));
-        yield return new WaitForSeconds(10f);
-        for (int i = 0; i < 5; i++)
+        yield return new WaitForSeconds(5f);
+        for (int i = 0; i < 7; i++)
         {
             SpawnAttacker_RedSlime(2);
             yield return new WaitForSeconds(0.3f);
         }
-        if (root)
-        {
-            activeWave = false;
-        }
+        rootAction(root);
     }
     
     IEnumerator SpawnWave4(bool root)
@@ -107,10 +98,7 @@ public class SpawnManager : MonoBehaviour
             SpawnAttacker_GreenSlime(1);
             yield return new WaitForSeconds(0.3f);
         }
-        if (root)
-        {
-            activeWave = false;
-        }
+        rootAction(root);
     }
     
     IEnumerator SpawnWave5(bool root)
@@ -120,9 +108,15 @@ public class SpawnManager : MonoBehaviour
             SpawnAttacker_GreenSlime(1);
             yield return new WaitForSeconds(0.3f);
         }
+        rootAction(root);
+    }
+
+    public void rootAction(bool root)
+    {
         if (root)
         {
             activeWave = false;
+            MoneyManager.GiveMoney(waveReward); Debug.Log("Active wave over");
         }
     }
     

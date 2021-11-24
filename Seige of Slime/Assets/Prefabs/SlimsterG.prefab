@@ -394,6 +394,7 @@ MonoBehaviour:
   speedMod: 1
   velocity: 5
   isDead: 0
+  killReward: 1
   healthBar: {fileID: 0}
 --- !u!50 &7735927646608156452
 Rigidbody2D:

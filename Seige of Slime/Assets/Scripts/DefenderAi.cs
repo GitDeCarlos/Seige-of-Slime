@@ -60,10 +60,14 @@ public class DefenderAi : MonoBehaviour
     public void Select()
     {
         rangeArea.GetComponent<SpriteRenderer>().enabled = true;
+        
+        // Show upgrade UI
     }
 
     public void Deselect()
     {
         rangeArea.GetComponent<SpriteRenderer>().enabled = false;
+        
+        // Hide upgrade UI
     }
 }
