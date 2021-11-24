@@ -5848,6 +5848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1917182222}
   - component: {fileID: 1917182221}
+  - component: {fileID: 1917182223}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5889,6 +5890,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1917182223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917182220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db07266df71fbed48b147592cea079c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerPos1: {fileID: 747172950}
+  spawnerPos2: {fileID: 1851071948}
+  spawnerPos5: {fileID: 973187533}
+  spawnerPos11: {fileID: 1748136108}
+  slimeGreen: {fileID: 7735927646608156440, guid: 8372e14b2f932674da5ccc8c8cefc33a, type: 3}
+  slimeBlack: {fileID: 3159849513087135488, guid: 4d37a0c81eaf8c84f8e2b1f99e3ad20a, type: 3}
+  slimeRed: {fileID: 7172627071971703569, guid: 525ba11e31bf1e242b0382c606953aca, type: 3}
+  jet: {fileID: 6214511850481191808, guid: 651081b485f342544975cf75975a96f1, type: 3}
+  timeBetweenWaves: 5
 --- !u!1 &1974405061
 GameObject:
   m_ObjectHideFlags: 0

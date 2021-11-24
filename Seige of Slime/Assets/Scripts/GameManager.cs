@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         shootTimerMax = 0.15f;
+    }
+
+    private void Start()
+    {
+        //SpawnWave1();
     }
 
     void Update()
@@ -62,8 +68,7 @@ public class GameManager : MonoBehaviour
     public Vector3 GetMouseCameraPosition()
     {
         Vector3 position = new Vector3();
-
-
+        
         return position;
     }
     
@@ -99,5 +104,81 @@ public class GameManager : MonoBehaviour
 
         return closest;
     }
+
+    private void SpawnWave1()
+    {
+        float spawnTime = 0f;
+        float timePerSpawn = .6f;
+
+        for (int i = 0; i < 10; i++)
+        {
+            SpawnAttacker_RedSlime(1, spawnerPos1, 500f);
+        }
+    }
+
+    private void SpawnAttacker_GreenSlime(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
+    {
+        while (timeTilSpawn > 0f)
+        {
+            timeTilSpawn -= Time.deltaTime;
+        }
+        GameObject temp = Instantiate(slimeGreen, spawner.position, Quaternion.identity);
+        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
+
+        while (timeForSpawn > 0f)
+        {
+            timeForSpawn -= Time.deltaTime;
+        }
+        
+    }
     
+    private void SpawnAttacker_RedSlime(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
+    {
+        while (timeTilSpawn > 0f)
+        {
+            timeTilSpawn -= Time.deltaTime;
+        }
+        GameObject temp = Instantiate(slimeRed, spawner.position, Quaternion.identity);
+        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
+
+        while (timeForSpawn > 0f)
+        {
+            timeForSpawn -= Time.deltaTime;
+            Debug.Log("spawndelay");
+        }
+        
+    }
+    
+    private void SpawnAttacker_BlackSlime(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
+    {
+        while (timeTilSpawn > 0f)
+        {
+            timeTilSpawn -= Time.deltaTime;
+        }
+        GameObject temp = Instantiate(slimeBlack, spawner.position, Quaternion.identity);
+        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
+
+        while (timeForSpawn > 0f)
+        {
+            timeForSpawn -= Time.deltaTime;
+        }
+        
+    }
+    
+    private void SpawnAttacker_Jet(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
+    {
+        while (timeTilSpawn > 0f)
+        {
+            timeTilSpawn -= Time.deltaTime;
+        }
+        GameObject temp = Instantiate(jet, spawner.position, Quaternion.identity);
+        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
+
+        while (timeForSpawn > 0f)
+        {
+            timeForSpawn -= Time.deltaTime;
+        }
+        
+    }
+
 }
