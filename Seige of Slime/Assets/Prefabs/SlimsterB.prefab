@@ -200,11 +200,12 @@ MonoBehaviour:
   nextNode: {fileID: 0}
   nodeIndex: 1
   followingNode: 1
-  health: 100
+  health: 120
   damage: 20
   speedMod: 0.5
   velocity: 5
   isDead: 0
+  killReward: 5
   healthBar: {fileID: 0}
 --- !u!1 &5886920966840422994
 GameObject:

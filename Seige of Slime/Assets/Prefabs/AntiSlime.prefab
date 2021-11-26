@@ -49,9 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeArea: {fileID: 7575553441498456813}
-  pfProjectileArrow: {fileID: 8210323814653632262, guid: c2bcb56442dc7f943905edbe70ab5db3, type: 3}
-  shootTimerMax: 0.01
+  pfProjectileArrow: {fileID: 1257688326443407101, guid: 2fea774b1bfa6e5409a01efce95959f4, type: 3}
+  shootTimerMax: 0.1
   range: 3.1
+  damage: 5
 --- !u!61 &276293132200969916
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62,7 +63,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

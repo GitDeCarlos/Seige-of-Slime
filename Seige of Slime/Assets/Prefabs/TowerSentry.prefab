@@ -52,6 +52,7 @@ MonoBehaviour:
   pfProjectileArrow: {fileID: 8210323814653632262, guid: c2bcb56442dc7f943905edbe70ab5db3, type: 3}
   shootTimerMax: 0.5
   range: 3.1
+  damage: 20
 --- !u!50 &3346039462979658247
 Rigidbody2D:
   serializedVersion: 4
@@ -83,7 +84,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -6,11 +6,17 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    // Spawn locations on the map
     public Transform spawnerPos1;
     public Transform spawnerPos2;
     public Transform spawnerPos5;
     public Transform spawnerPos11;
 
+    // Defender prefabs
+    public GameObject towerSentry;
+    public GameObject antiSlime;
+    
+    // Attacker prefabs
     public GameObject slimeGreen;
     public GameObject slimeBlack;
     public GameObject slimeRed;
@@ -25,7 +31,9 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject waveCounter;
 
-    private int waveReward = 100;
+    private int waveReward = 10;
+
+    private GameObject heldDefender = null;
 
     void Update()
     {
@@ -54,6 +62,15 @@ public class SpawnManager : MonoBehaviour
             waveNumber++;
             readyToStart = false;
 
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            if (heldDefender != null)
+            {
+                heldDefender.transform.parent = null;
+                heldDefender = null;
+            }
         }
         
     }
@@ -116,7 +133,7 @@ public class SpawnManager : MonoBehaviour
         if (root)
         {
             activeWave = false;
-            MoneyManager.GiveMoney(waveReward); Debug.Log("Active wave over");
+            MoneyManager.GiveMoney(waveReward);
         }
     }
     
@@ -132,6 +149,42 @@ public class SpawnManager : MonoBehaviour
         temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
     }
 
+    private void SpawnDefender_TowerSentry()
+    {
+        if (heldDefender == null)
+        {
+            Transform parent = GameObject.Find("MouseObject").transform;
+            heldDefender = Instantiate(towerSentry, parent);
+            heldDefender.transform.localPosition = Vector3.zero;
+            //temp.GetComponent<DefenderAi>().placed = false;
+        }
+    }
+    
+    private void SpawnDefender_AntiSlime()
+    {
+        if (heldDefender == null)
+        {
+            Transform parent = GameObject.Find("MouseObject").transform;
+            heldDefender = Instantiate(antiSlime, parent);
+            heldDefender.transform.localPosition = Vector3.zero;
+            //temp.GetComponent<DefenderAi>().placed = false;
+        }
+    }
+
+    public void BuyDefender1()
+    {
+        if (MoneyManager.TakeMoney(20))
+            SpawnDefender_TowerSentry();
+    }
+
+    public void BuyDefender2()
+    {
+        if (MoneyManager.TakeMoney(40))
+        {
+            SpawnDefender_AntiSlime();
+        }
+    }
+    
     private Transform NodeToSpawner(int spawnerNode)
     {
         if (spawnerNode == 1)
@@ -148,6 +201,7 @@ public class SpawnManager : MonoBehaviour
         if (!activeWave)
         {
             readyToStart = true;
+            waveReward = (int)(waveReward * 1.4); Debug.Log(waveReward);
         }
     }
 }

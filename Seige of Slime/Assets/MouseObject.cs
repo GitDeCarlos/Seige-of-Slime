@@ -26,7 +26,12 @@ public class MouseObject : MonoBehaviour
             }
             else
             {
-                if (hoveredDefenderAi != null && selectedDefenderAi != hoveredDefenderAi)
+                if (hoveredDefenderAi == selectedDefenderAi)
+                {
+                    selectedDefenderAi.Deselect();
+                    selectedDefenderAi = null;
+                }
+                else if (hoveredDefenderAi != null && selectedDefenderAi != hoveredDefenderAi)
                 {
                     selectedDefenderAi.Deselect();
                     selectedDefenderAi = hoveredDefenderAi;

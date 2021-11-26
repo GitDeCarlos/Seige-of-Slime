@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DefenderAi : MonoBehaviour
 {
@@ -15,16 +17,11 @@ public class DefenderAi : MonoBehaviour
     
     // Tower Stats
     public float range = 3.1f;
-
-    private void Awake()
-    {
-        projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
-        //rangeArea = GameObject.Find("RangeArea");
-    }
+    public int damage = 5;
 
     private void Update()
     {
-        
+        projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
         rangeArea.transform.localScale = new Vector3(range, range, 1);
 
         if (Input.GetMouseButtonDown(0))
@@ -44,6 +41,7 @@ public class DefenderAi : MonoBehaviour
             if (attacker != null)
             {
                 GameObject arrow = Instantiate(pfProjectileArrow, projectileShootFromPosition, quaternion.identity);
+                arrow.GetComponent<ProjectileArrow>().damage = damage;
                 arrow.GetComponent<ProjectileArrow>().Target(attacker);
             }
         }
@@ -51,6 +49,21 @@ public class DefenderAi : MonoBehaviour
         shootTimer -= Time.deltaTime;
     }
 
+    public void UpgradeDPS()
+    {
+        damage = (int)(damage * 1.5);
+    }
+
+    public void UpgradePPS()
+    {
+        shootTimerMax *= 0.9f;
+    }
+    
+    public void UpgradeRANGE()
+    {
+        range *= 1.2f;
+    }
+    
     private AttackerAi GetClosestAttackerAi()
     {
         AttackerAi attacker = GameObject.Find("GameManager").GetComponent<GameManager>().GetClosestAttackerAi(transform.position, range);
@@ -59,15 +72,19 @@ public class DefenderAi : MonoBehaviour
 
     public void Select()
     {
-        rangeArea.GetComponent<SpriteRenderer>().enabled = true;
+        UIUpgrade.EnableButton();
         
+        rangeArea.GetComponent<SpriteRenderer>().enabled = true;
+        UIUpgrade.SetUpgradeTarget(gameObject);
         // Show upgrade UI
     }
 
     public void Deselect()
     {
-        rangeArea.GetComponent<SpriteRenderer>().enabled = false;
+        UIUpgrade.DisableButton();
         
+        rangeArea.GetComponent<SpriteRenderer>().enabled = false;
+        UIUpgrade.ClearUpgradeTarget();
         // Hide upgrade UI
     }
 }

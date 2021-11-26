@@ -7,7 +7,7 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     public static int myMoney;
-    private int startMoney = 20;
+    private int startMoney = 300;
 
     public GameObject moneyCounter;
 
@@ -28,7 +28,7 @@ public class MoneyManager : MonoBehaviour
 
     public static bool TakeMoney(int money)
     {
-        if (myMoney > money)
+        if (myMoney >= money)
         {
             myMoney -= money;
             return true;
