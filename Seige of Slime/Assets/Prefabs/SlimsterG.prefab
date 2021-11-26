@@ -332,8 +332,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7735927646608156453}
+  - component: {fileID: 545856995835910924}
   - component: {fileID: 7735927646608156454}
-  - component: {fileID: 7735927646608156455}
   - component: {fileID: 7735927646608156452}
   m_Layer: 0
   m_Name: SlimsterG
@@ -358,6 +358,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545856995835910924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735927646608156440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1949e2134905a4a9d83e0743db0ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNode: {fileID: 0}
+  nodeIndex: 1
+  followingNode: 1
+  health: 40
+  damage: 20
+  speedMod: 1
+  velocity: 5
+  isDead: 0
+  killReward: 1
+  healthBar: {fileID: 0}
 --- !u!58 &7735927646608156454
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -374,28 +396,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &7735927646608156455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7735927646608156440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f1949e2134905a4a9d83e0743db0ceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextNode: {fileID: 0}
-  nodeIndex: 1
-  followingNode: 1
-  health: 40
-  damage: 5
-  speedMod: 1
-  velocity: 4
-  isDead: 0
-  killReward: 1
-  healthBar: {fileID: 0}
 --- !u!50 &7735927646608156452
 Rigidbody2D:
   serializedVersion: 4

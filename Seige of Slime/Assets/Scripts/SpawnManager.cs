@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject slimeRed;
     public GameObject jet;
 
-    public float timeBetweenWaves = 5f;
+    //public float timeBetweenWaves = 5f;
     private float countdown = 2f;
 
     private int waveNumber = 1;
@@ -189,11 +189,11 @@ public class SpawnManager : MonoBehaviour
     {
         if (spawnerNode == 1)
             return spawnerPos1;
-        else if (spawnerNode == 2)
+        if (spawnerNode == 2)
             return spawnerPos2;
-        else if (spawnerNode == 3)
+        if (spawnerNode == 3)
             return spawnerPos5;
-        else return spawnerPos11;
+        return spawnerPos11;
     }
 
     public void NextWave()

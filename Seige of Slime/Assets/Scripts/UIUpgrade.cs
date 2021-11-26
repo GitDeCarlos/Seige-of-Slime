@@ -6,42 +6,39 @@ using UnityEngine;
 
 public class UIUpgrade : MonoBehaviour
 {
-    static GameObject upgradeTarget;
-    
-    static GameObject uiButtonDPS;
-    static GameObject uiButtonPPS;
-    static GameObject uiButtonRANGE;
+    private GameObject upgradeTarget;
+
+    public GameObject uiButtonDPS;
+    public GameObject uiButtonPPS;
+    public GameObject uiButtonRANGE;
 
     private void Start()
     {
-        uiButtonDPS = GameObject.Find("uDPSButton");
         uiButtonDPS.SetActive(false);
-        uiButtonPPS = GameObject.Find("uPPSButton");
         uiButtonPPS.SetActive(false);
-        uiButtonRANGE = GameObject.Find("uRANGEButton");
         uiButtonRANGE.SetActive(false);
     }
 
-    public static void EnableButton()
+    public void EnableButton()
     {
         uiButtonDPS.SetActive(true);
         uiButtonPPS.SetActive(true);
         uiButtonRANGE.SetActive(true);
     }
 
-    public static void DisableButton()
+    public void DisableButton()
     {
         uiButtonDPS.SetActive(false);
         uiButtonPPS.SetActive(false);
         uiButtonRANGE.SetActive(false);
     }
     
-    public static void SetUpgradeTarget(GameObject target)
+    public void SetUpgradeTarget(GameObject target)
     {
         upgradeTarget = target;
     }
 
-    public static void ClearUpgradeTarget()
+    public void ClearUpgradeTarget()
     {
         upgradeTarget = null;
     }

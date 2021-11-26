@@ -19,6 +19,13 @@ public class DefenderAi : MonoBehaviour
     public float range = 3.1f;
     public int damage = 5;
 
+    private UIUpgrade uiUpgrade;
+
+    private void Start()
+    {
+        uiUpgrade = GameObject.Find("uButtons").GetComponent<UIUpgrade>();
+    }
+
     private void Update()
     {
         projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
@@ -72,19 +79,19 @@ public class DefenderAi : MonoBehaviour
 
     public void Select()
     {
-        UIUpgrade.EnableButton();
+        uiUpgrade.EnableButton();
         
         rangeArea.GetComponent<SpriteRenderer>().enabled = true;
-        UIUpgrade.SetUpgradeTarget(gameObject);
+        uiUpgrade.SetUpgradeTarget(gameObject);
         // Show upgrade UI
     }
 
     public void Deselect()
     {
-        UIUpgrade.DisableButton();
+        uiUpgrade.DisableButton();
         
         rangeArea.GetComponent<SpriteRenderer>().enabled = false;
-        UIUpgrade.ClearUpgradeTarget();
+        uiUpgrade.ClearUpgradeTarget();
         // Hide upgrade UI
     }
 }

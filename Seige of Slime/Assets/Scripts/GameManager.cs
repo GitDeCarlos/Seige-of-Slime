@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private float shootTimerMax;
+    //private float shootTimerMax;
     private float shootTimer;
 
     public static List<AttackerAi> attackerList = new List<AttackerAi>();
     
     void Awake()
     {
-        shootTimerMax = 0.15f;
+        //shootTimerMax = 0.15f;
     }
 
     private void Start()
