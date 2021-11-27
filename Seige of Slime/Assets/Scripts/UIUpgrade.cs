@@ -16,6 +16,9 @@ public class UIUpgrade : MonoBehaviour
     public GameObject uiButtonARMOR;
     public GameObject uiButtonRSTRHEALTH;
     public GameObject uiButtonRSTRARMOR;
+
+    public GameObject statsPanelDefender;
+    public GameObject statsPanelCastle;
     
     private void Start()
     {
@@ -27,6 +30,9 @@ public class UIUpgrade : MonoBehaviour
         uiButtonARMOR.SetActive(false);
         uiButtonRSTRHEALTH.SetActive(false);
         uiButtonRSTRARMOR.SetActive(false);
+        
+        statsPanelDefender.SetActive(false);
+        statsPanelCastle.SetActive(false);
     }
 
     public void EnableButton()
@@ -34,6 +40,8 @@ public class UIUpgrade : MonoBehaviour
         uiButtonDPS.SetActive(true);
         uiButtonPPS.SetActive(true);
         uiButtonRANGE.SetActive(true);
+        
+        statsPanelDefender.SetActive(true);
     }
 
     public void EnableButtonCastle()
@@ -42,6 +50,8 @@ public class UIUpgrade : MonoBehaviour
         uiButtonARMOR.SetActive(true);
         uiButtonRSTRHEALTH.SetActive(true);
         uiButtonRSTRARMOR.SetActive(true);
+        
+        statsPanelCastle.SetActive(true);
     }
 
     public void DisableButton()
@@ -49,6 +59,8 @@ public class UIUpgrade : MonoBehaviour
         uiButtonDPS.SetActive(false);
         uiButtonPPS.SetActive(false);
         uiButtonRANGE.SetActive(false);
+        
+        statsPanelDefender.SetActive(false);
     }
 
     public void DisableButtonCastle()
@@ -57,6 +69,8 @@ public class UIUpgrade : MonoBehaviour
         uiButtonARMOR.SetActive(false);
         uiButtonRSTRHEALTH.SetActive(false);
         uiButtonRSTRARMOR.SetActive(false);
+        
+        statsPanelCastle.SetActive(false);
     }
     
     public void SetUpgradeTarget(GameObject target)
