@@ -16,6 +16,8 @@ public class CastleManager : MonoBehaviour
     private UIUpgrade uiUpgrade;
     public GameObject rangeArea;
 
+    private GameObject statsGroupObject;
+
     public void Start()
     {
         uiUpgrade = GameObject.Find("uButtons").GetComponent<UIUpgrade>();
@@ -28,6 +30,8 @@ public class CastleManager : MonoBehaviour
 
         health = maxHealth;
         armor = maxArmor;
+        
+        statsGroupObject = GameObject.Find("StatsPanel_Castle");
     }
 
     public void Update()
@@ -38,6 +42,8 @@ public class CastleManager : MonoBehaviour
         {
             Debug.Log("----GAME OVER----");
         }
+        
+        statsGroupObject.GetComponent<StatsPanel>().UpdateCastleStats(health, maxHealth, armor, maxArmor);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

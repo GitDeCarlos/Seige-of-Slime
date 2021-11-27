@@ -20,10 +20,12 @@ public class DefenderAi : MonoBehaviour
     public int damage = 5;
 
     private UIUpgrade uiUpgrade;
+    private GameObject statsGroupObject;
 
     private void Start()
     {
         uiUpgrade = GameObject.Find("uButtons").GetComponent<UIUpgrade>();
+        statsGroupObject = GameObject.Find("StatsPanel_Defender");
     }
 
     private void Update()
@@ -53,6 +55,7 @@ public class DefenderAi : MonoBehaviour
             }
         }
         
+        statsGroupObject.GetComponent<StatsPanel>().UpdateDefenderStats(damage, range, shootTimerMax);
         shootTimer -= Time.deltaTime;
     }
 

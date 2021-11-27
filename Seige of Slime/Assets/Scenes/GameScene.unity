@@ -4154,6 +4154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 313800058}
   - component: {fileID: 313800060}
+  - component: {fileID: 313800061}
   - component: {fileID: 313800059}
   m_Layer: 5
   m_Name: StatsPanel_Defender
@@ -4221,6 +4222,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313800057}
   m_CullTransparentMesh: 1
+--- !u!114 &313800061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313800057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a4b6a3c07fcd548b5fe905ba1ee8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsObject: {fileID: 240902275}
+  isDefender: 1
 --- !u!1 &337439136
 GameObject:
   m_ObjectHideFlags: 0
@@ -12177,6 +12192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1834364965}
   - component: {fileID: 1834364967}
+  - component: {fileID: 1834364968}
   - component: {fileID: 1834364966}
   m_Layer: 5
   m_Name: StatsPanel_Castle
@@ -12244,6 +12260,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834364964}
   m_CullTransparentMesh: 1
+--- !u!114 &1834364968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834364964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a4b6a3c07fcd548b5fe905ba1ee8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsObject: {fileID: 781828048}
+  isDefender: 0
 --- !u!1001 &1848748751
 PrefabInstance:
   m_ObjectHideFlags: 0
