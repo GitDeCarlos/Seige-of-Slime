@@ -12,11 +12,21 @@ public class UIUpgrade : MonoBehaviour
     public GameObject uiButtonPPS;
     public GameObject uiButtonRANGE;
 
+    public GameObject uiButtonHEALTH;
+    public GameObject uiButtonARMOR;
+    public GameObject uiButtonRSTRHEALTH;
+    public GameObject uiButtonRSTRARMOR;
+    
     private void Start()
     {
         uiButtonDPS.SetActive(false);
         uiButtonPPS.SetActive(false);
         uiButtonRANGE.SetActive(false);
+        
+        uiButtonHEALTH.SetActive(false);
+        uiButtonARMOR.SetActive(false);
+        uiButtonRSTRHEALTH.SetActive(false);
+        uiButtonRSTRARMOR.SetActive(false);
     }
 
     public void EnableButton()
@@ -26,11 +36,27 @@ public class UIUpgrade : MonoBehaviour
         uiButtonRANGE.SetActive(true);
     }
 
+    public void EnableButtonCastle()
+    {
+        uiButtonHEALTH.SetActive(true);
+        uiButtonARMOR.SetActive(true);
+        uiButtonRSTRHEALTH.SetActive(true);
+        uiButtonRSTRARMOR.SetActive(true);
+    }
+
     public void DisableButton()
     {
         uiButtonDPS.SetActive(false);
         uiButtonPPS.SetActive(false);
         uiButtonRANGE.SetActive(false);
+    }
+
+    public void DisableButtonCastle()
+    {
+        uiButtonHEALTH.SetActive(false);
+        uiButtonARMOR.SetActive(false);
+        uiButtonRSTRHEALTH.SetActive(false);
+        uiButtonRSTRARMOR.SetActive(false);
     }
     
     public void SetUpgradeTarget(GameObject target)
@@ -64,6 +90,38 @@ public class UIUpgrade : MonoBehaviour
         if (MoneyManager.TakeMoney(20))
         {
             upgradeTarget.GetComponent<DefenderAi>().UpgradeRANGE();
+        }
+    }
+    
+    public void UpgradeHEALTH()
+    {
+        if (MoneyManager.TakeMoney(20))
+        {
+            upgradeTarget.GetComponent<CastleManager>().UpgradeHealth();
+        }
+    }
+    
+    public void UpgradeARMOR()
+    {
+        if (MoneyManager.TakeMoney(20))
+        {
+            upgradeTarget.GetComponent<CastleManager>().UpgradeArmor();
+        }
+    }
+    
+    public void RestoreHEALTH()
+    {
+        if (MoneyManager.TakeMoney(20))
+        {
+            upgradeTarget.GetComponent<CastleManager>().Heal();
+        }
+    }
+    
+    public void RestoreARMOR()
+    {
+        if (MoneyManager.TakeMoney(20))
+        {
+            upgradeTarget.GetComponent<CastleManager>().Repair();
         }
     }
 }

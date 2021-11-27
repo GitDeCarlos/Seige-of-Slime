@@ -11,12 +11,11 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         bar = transform.Find("Bar");
-        //bar.localScale = new Vector3(.5f, 1f);
     }
 
     public void SetHealth(int health)
     {
-        this.totalHealth = health;
+        totalHealth = health;
     }
     
     public void UpdateHealth(int health)
@@ -28,10 +27,5 @@ public class HealthBar : MonoBehaviour
         }
         float ratio = (float)health / (float)totalHealth;
         bar.localScale = new Vector3(ratio, 1f);
-    }
-
-    public void UpdateBar(int newHealth, int oldHealth)
-    {
-        
     }
 }

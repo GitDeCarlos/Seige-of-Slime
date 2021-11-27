@@ -6,18 +6,28 @@ using UnityEngine;
 public class CastleManager : MonoBehaviour
 {
     public HealthBar healthBar;
-    public int health = 100;
+    public int maxHealth = 100;
+    private int health;
 
     public HealthBar armorBar;
-    public int armor = 100;
+    public int maxArmor = 100;
+    private int armor;
+
+    private UIUpgrade uiUpgrade;
+    public GameObject rangeArea;
 
     public void Start()
     {
-        healthBar = transform.Find("HealthBar").GetComponent<HealthBar>();
-        healthBar.SetHealth(health);
+        uiUpgrade = GameObject.Find("uButtons").GetComponent<UIUpgrade>();
+        
+        //healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
+        healthBar.SetHealth(maxHealth);
 
-        armorBar = transform.Find("ArmorBar").GetComponent<HealthBar>();
-        armorBar.SetHealth(armor);
+        //armorBar = GameObject.Find("ArmorBar").GetComponent<HealthBar>();
+        armorBar.SetHealth(maxArmor);
+
+        health = maxHealth;
+        armor = maxArmor;
     }
 
     public void Update()
@@ -47,6 +57,28 @@ public class CastleManager : MonoBehaviour
         }*/
     }
 
+    public void UpgradeHealth()
+    {
+        maxHealth += 25;
+        healthBar.SetHealth(maxHealth); Debug.Log(maxHealth);
+    }
+
+    public void Heal()
+    {
+        health = maxHealth;
+    }
+
+    public void UpgradeArmor()
+    {
+        maxArmor = maxArmor + (int)(0.25*maxArmor); Debug.Log(maxArmor);
+        armorBar.SetHealth(maxArmor);
+    }
+    
+    public void Repair()
+    {
+        armor = maxArmor;
+    }
+
     public void Damage(int d)
     {
         if (armor > 0)
@@ -57,5 +89,21 @@ public class CastleManager : MonoBehaviour
         {
             health -= d;
         }
+    }
+
+    public void Select()
+    {
+        uiUpgrade.EnableButtonCastle();
+
+        rangeArea.GetComponent<SpriteRenderer>().enabled = true;
+        uiUpgrade.SetUpgradeTarget(gameObject);
+    }
+
+    public void Deselect()
+    {
+        uiUpgrade.DisableButtonCastle();
+        
+        rangeArea.GetComponent<SpriteRenderer>().enabled = false;
+        uiUpgrade.ClearUpgradeTarget();
     }
 }

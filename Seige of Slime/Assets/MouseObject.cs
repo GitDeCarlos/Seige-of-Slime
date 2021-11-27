@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class MouseObject : MonoBehaviour
 {
-    private DefenderAi selectedDefenderAi;
-    private DefenderAi hoveredDefenderAi;
+    private GameObject selected;
+    private GameObject hovered;
     
     
     // Update is called once per frame
@@ -16,29 +16,46 @@ public class MouseObject : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (selectedDefenderAi == null)
+            if (selected == null)
             {
-                if (hoveredDefenderAi != null)
+                if (hovered != null)
                 {
-                    selectedDefenderAi = hoveredDefenderAi;
-                    selectedDefenderAi.Select();
+                    // surround with if statement
+                    selected = hovered;
+                    SelectSelected();
                 }
             }
             else
             {
-                if (hoveredDefenderAi == selectedDefenderAi)
+                if (hovered == selected)
                 {
-                    selectedDefenderAi.Deselect();
-                    selectedDefenderAi = null;
+                    // surround with if statement
+                    DeselectSelected();
+                    selected = null;
                 }
-                else if (hoveredDefenderAi != null && selectedDefenderAi != hoveredDefenderAi)
+                else if (hovered != null && selected != hovered)
                 {
-                    selectedDefenderAi.Deselect();
-                    selectedDefenderAi = hoveredDefenderAi;
-                    selectedDefenderAi.Select();
+                    // surround with if statement
+                    DeselectSelected();
+                    selected = hovered;
+                    SelectSelected();
                 }
             }
         }
+    }
+
+    public void SelectSelected()
+    {
+        if (selected.GetComponent<DefenderAi>() != null)
+            selected.GetComponent<DefenderAi>().Select();
+        else selected.GetComponent<CastleManager>().Select();
+    }
+
+    private void DeselectSelected()
+    {
+        if (selected.GetComponent<DefenderAi>() != null)
+            selected.GetComponent<DefenderAi>().Deselect();
+        else selected.GetComponent<CastleManager>().Deselect();
     }
 
     public static Vector3 GetMousePosition()
@@ -48,17 +65,17 @@ public class MouseObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<DefenderAi>() != null)
+        if (other.GetComponent<DefenderAi>() != null || other.GetComponent<CastleManager>() != null)
         {
-            hoveredDefenderAi = other.gameObject.GetComponent<DefenderAi>();
+            hovered = other.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<DefenderAi>() != null)
+        if (other.GetComponent<DefenderAi>() != null || other.GetComponent<CastleManager>() != null)
         {
-            hoveredDefenderAi = null;
+            hovered = null;
         }
     }
 }

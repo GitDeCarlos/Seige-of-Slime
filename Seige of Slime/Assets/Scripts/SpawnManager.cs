@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject jet;
 
     //public float timeBetweenWaves = 5f;
-    private float countdown = 2f;
+    //private float countdown = 2f;
 
     private int waveNumber = 1;
     private bool readyToStart = false;
