@@ -19,58 +19,46 @@ public class UIUpgrade : MonoBehaviour
 
     public GameObject statsPanelDefender;
     public GameObject statsPanelCastle;
+
+    public GameObject uDefendersGroup;
+    public GameObject uCastleGroup;
     
     private void Start()
     {
-        uiButtonDPS.SetActive(false);
+        uDefendersGroup.SetActive(false);
+        /*uiButtonDPS.SetActive(false);
         uiButtonPPS.SetActive(false);
-        uiButtonRANGE.SetActive(false);
-        
-        uiButtonHEALTH.SetActive(false);
+        uiButtonRANGE.SetActive(false);*/
+
+        uCastleGroup.SetActive(false);
+        /*uiButtonHEALTH.SetActive(false);
         uiButtonARMOR.SetActive(false);
         uiButtonRSTRHEALTH.SetActive(false);
-        uiButtonRSTRARMOR.SetActive(false);
+        uiButtonRSTRARMOR.SetActive(false);*/
         
-        statsPanelDefender.SetActive(false);
-        statsPanelCastle.SetActive(false);
+        //statsPanelDefender.SetActive(false);
+        //statsPanelCastle.SetActive(false);
     }
 
     public void EnableButton()
     {
-        uiButtonDPS.SetActive(true);
-        uiButtonPPS.SetActive(true);
-        uiButtonRANGE.SetActive(true);
-        
-        statsPanelDefender.SetActive(true);
+        uDefendersGroup.SetActive(true);
+        //statsPanelDefender.GetComponent<StatsPanel>().UpdateDefenderStats(upgradeTarget);
     }
 
     public void EnableButtonCastle()
     {
-        uiButtonHEALTH.SetActive(true);
-        uiButtonARMOR.SetActive(true);
-        uiButtonRSTRHEALTH.SetActive(true);
-        uiButtonRSTRARMOR.SetActive(true);
-        
-        statsPanelCastle.SetActive(true);
+        uCastleGroup.SetActive(true);
     }
 
     public void DisableButton()
     {
-        uiButtonDPS.SetActive(false);
-        uiButtonPPS.SetActive(false);
-        uiButtonRANGE.SetActive(false);
-        
-        statsPanelDefender.SetActive(false);
+        uDefendersGroup.SetActive(false);
     }
 
     public void DisableButtonCastle()
     {
-        uiButtonHEALTH.SetActive(false);
-        uiButtonARMOR.SetActive(false);
-        uiButtonRSTRHEALTH.SetActive(false);
-        uiButtonRSTRARMOR.SetActive(false);
-        
-        statsPanelCastle.SetActive(false);
+        uCastleGroup.SetActive(false);
     }
     
     public void SetUpgradeTarget(GameObject target)

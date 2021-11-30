@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class GameManager : MonoBehaviour
     private float shootTimer;
 
     public static List<AttackerAi> attackerList = new List<AttackerAi>();
+
+    public GameObject gameOverScreen;
+    public GameObject gameOverText;
     
     void Awake()
     {
@@ -129,5 +134,20 @@ public class GameManager : MonoBehaviour
         }
         
     }*/
+
+    public void GameOver(int status)
+    {
+        // status 1 means win, status 0 means lose
+        if (status == 1)
+        {
+            
+        }
+        else
+        {
+            gameOverText.GetComponent<Text>().text =
+                "You Survived: " + (gameObject.GetComponent<SpawnManager>().GetWaveNumber()-1) + " Waves!";
+            gameOverScreen.SetActive(true);
+        }
+    }
 
 }

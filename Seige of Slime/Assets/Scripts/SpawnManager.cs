@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
     //public float timeBetweenWaves = 5f;
     //private float countdown = 2f;
 
-    private int waveNumber = 1;
+    private int waveNumber = 0;
     private bool readyToStart = false;
     private bool activeWave = false;
 
@@ -58,8 +58,11 @@ public class SpawnManager : MonoBehaviour
                 case 5:
                     StartCoroutine(SpawnWave5(true));
                     break;
+                
+                case 21 :
+                    gameObject.GetComponent<GameManager>().GameOver(0);
+                    break;
             }
-            waveNumber++;
             readyToStart = false;
 
         }
@@ -201,7 +204,13 @@ public class SpawnManager : MonoBehaviour
         if (!activeWave)
         {
             readyToStart = true;
+            waveNumber++;
             waveReward = (int)(waveReward * 1.4); Debug.Log(waveReward);
         }
+    }
+
+    public int GetWaveNumber()
+    {
+        return waveNumber;
     }
 }

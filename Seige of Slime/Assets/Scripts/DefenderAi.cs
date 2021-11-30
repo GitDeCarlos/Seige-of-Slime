@@ -25,7 +25,7 @@ public class DefenderAi : MonoBehaviour
     private void Start()
     {
         uiUpgrade = GameObject.Find("uButtons").GetComponent<UIUpgrade>();
-        statsGroupObject = GameObject.Find("StatsPanel_Defender");
+        statsGroupObject = GameObject.Find("uButtons").GetComponent<UIUpgrade>().statsPanelDefender;
     }
 
     private void Update()
@@ -55,6 +55,7 @@ public class DefenderAi : MonoBehaviour
             }
         }
         
+        //Debug.Log(statsGroupObject + ", ");
         statsGroupObject.GetComponent<StatsPanel>().UpdateDefenderStats(damage, range, shootTimerMax);
         shootTimer -= Time.deltaTime;
     }
@@ -96,5 +97,10 @@ public class DefenderAi : MonoBehaviour
         rangeArea.GetComponent<SpriteRenderer>().enabled = false;
         uiUpgrade.ClearUpgradeTarget();
         // Hide upgrade UI
+    }
+
+    public int GetHealth()
+    {
+        return 123;
     }
 }

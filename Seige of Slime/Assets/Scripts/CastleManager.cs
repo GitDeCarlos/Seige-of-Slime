@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class CastleManager : MonoBehaviour
 {
+    private GameObject gameManager;
+    
     public HealthBar healthBar;
     public int maxHealth = 100;
     private int health;
+    private bool alive;
 
     public HealthBar armorBar;
     public int maxArmor = 100;
@@ -20,6 +23,7 @@ public class CastleManager : MonoBehaviour
 
     public void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         uiUpgrade = GameObject.Find("uButtons").GetComponent<UIUpgrade>();
         
         //healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
@@ -32,15 +36,17 @@ public class CastleManager : MonoBehaviour
         armor = maxArmor;
         
         statsGroupObject = GameObject.Find("StatsPanel_Castle");
+        alive = true;
     }
 
     public void Update()
     {
         armorBar.UpdateHealth(armor);
         healthBar.UpdateHealth(health);
-        if (health < 1)
+        if (health < 1 && alive)
         {
-            Debug.Log("----GAME OVER----");
+            gameManager.GetComponent<GameManager>().GameOver(0);
+            alive = false;
         }
         
         statsGroupObject.GetComponent<StatsPanel>().UpdateCastleStats(health, maxHealth, armor, maxArmor);
