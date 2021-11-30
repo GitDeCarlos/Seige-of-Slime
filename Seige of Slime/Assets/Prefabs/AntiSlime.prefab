@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeArea: {fileID: 7575553441498456813}
   pfProjectileArrow: {fileID: 1257688326443407101, guid: 2fea774b1bfa6e5409a01efce95959f4, type: 3}
-  shootTimerMax: 0.1
+  shootTimerMax: 0.2
   range: 3.1
   damage: 5
 --- !u!61 &276293132200969916

@@ -26,10 +26,7 @@ public class CastleManager : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         uiUpgrade = GameObject.Find("uButtons").GetComponent<UIUpgrade>();
         
-        //healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         healthBar.SetHealth(maxHealth);
-
-        //armorBar = GameObject.Find("ArmorBar").GetComponent<HealthBar>();
         armorBar.SetHealth(maxArmor);
 
         health = maxHealth;
@@ -59,14 +56,6 @@ public class CastleManager : MonoBehaviour
             this.Damage(other.GetComponent<AttackerAi>().damage);
             other.gameObject.GetComponent<AttackerAi>().Kill();
         }
-        
-        /*switch (other.name)
-        {
-            case "SlimsterG(Clone)": 
-                damage(other.GetComponent<AttackerAi>().damage);
-                Destroy(other.gameObject);
-                break;
-        }*/
     }
 
     public void UpgradeHealth()

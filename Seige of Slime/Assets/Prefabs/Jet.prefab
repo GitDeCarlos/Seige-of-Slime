@@ -209,11 +209,12 @@ MonoBehaviour:
   nextNode: {fileID: 0}
   nodeIndex: 1
   followingNode: 1
-  health: 1000
+  health: 500
   damage: 100
   speedMod: 1
   velocity: 5
   isDead: 0
+  killReward: 1
   healthBar: {fileID: 0}
 --- !u!50 &6214511850481191820
 Rigidbody2D:

@@ -7,7 +7,7 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     public static int myMoney;
-    private int startMoney = 300;
+    private int startMoney = 30;
 
     public GameObject moneyCounter;
 

@@ -14,21 +14,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverScreen;
     public GameObject gameOverText;
-    
-    void Awake()
-    {
-        //shootTimerMax = 0.15f;
-    }
-
-    private void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public Vector3 GetMouseCameraPosition()
     {
@@ -69,71 +54,6 @@ public class GameManager : MonoBehaviour
 
         return closest;
     }
-
-    /*private void SpawnAttacker_GreenSlime(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
-    {
-        while (timeTilSpawn > 0f)
-        {
-            timeTilSpawn -= Time.deltaTime;
-        }
-        GameObject temp = Instantiate(slimeGreen, spawner.position, Quaternion.identity);
-        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
-
-        while (timeForSpawn > 0f)
-        {
-            timeForSpawn -= Time.deltaTime;
-        }
-        
-    }
-    
-    private void SpawnAttacker_RedSlime(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
-    {
-        while (timeTilSpawn > 0f)
-        {
-            timeTilSpawn -= Time.deltaTime;
-        }
-        GameObject temp = Instantiate(slimeRed, spawner.position, Quaternion.identity);
-        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
-
-        while (timeForSpawn > 0f)
-        {
-            timeForSpawn -= Time.deltaTime;
-            Debug.Log("spawndelay");
-        }
-        
-    }
-    
-    private void SpawnAttacker_BlackSlime(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
-    {
-        while (timeTilSpawn > 0f)
-        {
-            timeTilSpawn -= Time.deltaTime;
-        }
-        GameObject temp = Instantiate(slimeBlack, spawner.position, Quaternion.identity);
-        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
-
-        while (timeForSpawn > 0f)
-        {
-            timeForSpawn -= Time.deltaTime;
-        }
-        
-    }
-    
-    private void SpawnAttacker_Jet(int spawnerNode, Transform spawner, float timeForSpawn, float timeTilSpawn = 0f)
-    {
-        while (timeTilSpawn > 0f)
-        {
-            timeTilSpawn -= Time.deltaTime;
-        }
-        GameObject temp = Instantiate(jet, spawner.position, Quaternion.identity);
-        temp.GetComponent<AttackerAi>().nodeIndex = spawnerNode;
-
-        while (timeForSpawn > 0f)
-        {
-            timeForSpawn -= Time.deltaTime;
-        }
-        
-    }*/
 
     public void GameOver(int status)
     {

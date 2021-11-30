@@ -33,15 +33,6 @@ public class DefenderAi : MonoBehaviour
         projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
         rangeArea.transform.localScale = new Vector3(range, range, 1);
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            /* if ()
-            {
-                rangeArea.GetComponent<SpriteRenderer>().enabled = true;
-            }
-            rangeArea.GetComponent<SpriteRenderer>().enabled = !rangeArea.GetComponent<SpriteRenderer>().isVisible;*/
-        }
-        
         if (shootTimer <= 0f)
         {
             shootTimer = shootTimerMax;
@@ -56,13 +47,13 @@ public class DefenderAi : MonoBehaviour
         }
         
         //Debug.Log(statsGroupObject + ", ");
-        statsGroupObject.GetComponent<StatsPanel>().UpdateDefenderStats(damage, range, shootTimerMax);
+        //statsGroupObject.GetComponent<StatsPanel>().UpdateDefenderStats(damage, range, shootTimerMax);
         shootTimer -= Time.deltaTime;
     }
 
     public void UpgradeDPS()
     {
-        damage = (int)(damage * 1.5);
+        damage += 10;
     }
 
     public void UpgradePPS()
@@ -83,24 +74,32 @@ public class DefenderAi : MonoBehaviour
 
     public void Select()
     {
-        uiUpgrade.EnableButton();
-        
         rangeArea.GetComponent<SpriteRenderer>().enabled = true;
         uiUpgrade.SetUpgradeTarget(gameObject);
+        uiUpgrade.EnableButton();
         // Show upgrade UI
     }
 
     public void Deselect()
     {
-        uiUpgrade.DisableButton();
-        
         rangeArea.GetComponent<SpriteRenderer>().enabled = false;
         uiUpgrade.ClearUpgradeTarget();
+        uiUpgrade.DisableButton();
         // Hide upgrade UI
     }
 
-    public int GetHealth()
+    public int GetDamage()
     {
-        return 123;
+        return damage;
+    }
+
+    public float GetRange()
+    {
+        return range;
+    }
+
+    public float GetFirerate()
+    {
+        return shootTimerMax;
     }
 }

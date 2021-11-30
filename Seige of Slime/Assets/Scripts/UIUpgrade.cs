@@ -26,24 +26,14 @@ public class UIUpgrade : MonoBehaviour
     private void Start()
     {
         uDefendersGroup.SetActive(false);
-        /*uiButtonDPS.SetActive(false);
-        uiButtonPPS.SetActive(false);
-        uiButtonRANGE.SetActive(false);*/
 
         uCastleGroup.SetActive(false);
-        /*uiButtonHEALTH.SetActive(false);
-        uiButtonARMOR.SetActive(false);
-        uiButtonRSTRHEALTH.SetActive(false);
-        uiButtonRSTRARMOR.SetActive(false);*/
-        
-        //statsPanelDefender.SetActive(false);
-        //statsPanelCastle.SetActive(false);
     }
 
     public void EnableButton()
     {
         uDefendersGroup.SetActive(true);
-        //statsPanelDefender.GetComponent<StatsPanel>().UpdateDefenderStats(upgradeTarget);
+        UpdateStatsDefender();
     }
 
     public void EnableButtonCastle()
@@ -62,7 +52,7 @@ public class UIUpgrade : MonoBehaviour
     }
     
     public void SetUpgradeTarget(GameObject target)
-    {
+    { 
         upgradeTarget = target;
     }
 
@@ -76,6 +66,7 @@ public class UIUpgrade : MonoBehaviour
         if (MoneyManager.TakeMoney(20))
         {
             upgradeTarget.GetComponent<DefenderAi>().UpgradeDPS();
+            UpdateStatsDefender();
         }
     }
 
@@ -84,6 +75,7 @@ public class UIUpgrade : MonoBehaviour
         if (MoneyManager.TakeMoney(20))
         {
             upgradeTarget.GetComponent<DefenderAi>().UpgradePPS();
+            UpdateStatsDefender();
         }
     }
     
@@ -92,6 +84,7 @@ public class UIUpgrade : MonoBehaviour
         if (MoneyManager.TakeMoney(20))
         {
             upgradeTarget.GetComponent<DefenderAi>().UpgradeRANGE();
+            UpdateStatsDefender();
         }
     }
     
@@ -125,5 +118,15 @@ public class UIUpgrade : MonoBehaviour
         {
             upgradeTarget.GetComponent<CastleManager>().Repair();
         }
+    }
+
+    public void UpdateStatsDefender()
+    {
+        int tempDamage = upgradeTarget.GetComponent<DefenderAi>().GetDamage();
+        float tempRange = upgradeTarget.GetComponent<DefenderAi>().GetRange();
+        float tempFirerate = upgradeTarget.GetComponent<DefenderAi>().GetFirerate();
+        //Debug.Log(tempDamage + ", " + tempRange + ", " + tempFirerate );
+        
+        statsPanelDefender.GetComponent<StatsPanel>().UpdateDefenderStats(tempDamage, tempRange, tempFirerate);
     }
 }

@@ -365,7 +365,7 @@ MonoBehaviour:
   nodeIndex: 1
   followingNode: 1
   health: 80
-  damage: 10
+  damage: 30
   speedMod: 1
   velocity: 5
   isDead: 0

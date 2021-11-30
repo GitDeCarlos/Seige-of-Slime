@@ -14,22 +14,25 @@ public class ProjectileArrow : MonoBehaviour
 
     private void Update()
     {
-        if (attacker == null)
+        if (attacker != null)
+        {
+            targetPosition = attacker.transform.position;
+            Vector3 moveDir = (targetPosition - transform.position).normalized;
+
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+            float destroySelfDistance = 0.1f;
+            if (Vector3.Distance(transform.position, targetPosition) < destroySelfDistance)
+            {
+                attacker.Damage(damage);
+                Destroy(gameObject);
+            }
+        }
+        else
         {
             Destroy(gameObject);
         }
         
-        targetPosition = attacker.transform.position;
-        Vector3 moveDir = (targetPosition - transform.position).normalized;
-
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
-
-        float destroySelfDistance = 0.1f;
-        if (Vector3.Distance(transform.position, targetPosition) < destroySelfDistance)
-        {
-            attacker.Damage(damage);
-            Destroy(gameObject);
-        }
     }
 
     public void Target(AttackerAi attacker)
