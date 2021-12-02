@@ -369,7 +369,7 @@ MonoBehaviour:
   speedMod: 1
   velocity: 5
   isDead: 0
-  killReward: 2
+  killReward: 1
   healthBar: {fileID: 0}
 --- !u!1 &8004860864442976078
 GameObject:

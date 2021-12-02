@@ -17,9 +17,12 @@ public class SpawnManager : MonoBehaviour
     public GameObject antiSlime;
     
     // Attacker prefabs
-    public GameObject slimeGreen;
     public GameObject slimeBlack;
+    public GameObject slimeOrange;
     public GameObject slimeRed;
+    public GameObject slimeGreen;
+    public GameObject slimeYellow;
+    
     public GameObject jet;
 
     private int waveNumber = 0;
@@ -72,38 +75,37 @@ public class SpawnManager : MonoBehaviour
                     StartCoroutine(SpawnWave10(true));
                     break;
                 case 11:
-                    //StartCoroutine(SpawnWave11(true));
+                    StartCoroutine(SpawnWave11(true));
                     break;
                 case 12:
-                    //StartCoroutine(SpawnWave12(true));
+                    StartCoroutine(SpawnWave12(true));
                     break;
                 case 13:
-                    //StartCoroutine(SpawnWave13(true));
+                    StartCoroutine(SpawnWave13(true));
                     break;
                 case 14:
-                    //StartCoroutine(SpawnWave14(true));
+                    StartCoroutine(SpawnWave14(true));
                     break;
                 case 15:
-                    //StartCoroutine(SpawnWave15(true));
+                    StartCoroutine(SpawnWave15(true));
                     break;
                 case 16:
-                    //StartCoroutine(SpawnWave16(true));
+                    StartCoroutine(SpawnWave16(true));
                     break;
                 case 17:
-                    //StartCoroutine(SpawnWave17(true));
+                    StartCoroutine(SpawnWave17(true));
                     break;
                 case 18:
-                    //StartCoroutine(SpawnWave18(true));
+                    StartCoroutine(SpawnWave18(true));
                     break;
                 case 19:
-                    //StartCoroutine(SpawnWave19(true));
+                    StartCoroutine(SpawnWave19(true));
                     break;
                 case 20:
-                    //StartCoroutine(SpawnWave20(true));
+                    StartCoroutine(SpawnWave20(true));
                     break;
-                
                 case 21 :
-                    gameObject.GetComponent<GameManager>().GameOver(0);
+                    gameObject.GetComponent<GameManager>().GameOver(1);
                     break;
             }
             readyToStart = false;
@@ -156,7 +158,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnWave4(bool root)
     {
         StartCoroutine(SpawnWave3(false));
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             SpawnAttacker_GreenSlime(4);
             yield return new WaitForSeconds(0.5f);
@@ -168,7 +170,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(SpawnWave4(false));
         yield return new WaitForSeconds(5f);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             SpawnAttacker_GreenSlime(1);
             SpawnAttacker_GreenSlime(2);
@@ -191,7 +193,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnWave7(bool root)
     {
         StartCoroutine(SpawnWave6(false));
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             SpawnAttacker_RedSlime(2);
             yield return new WaitForSeconds(0.5f);
@@ -201,7 +203,7 @@ public class SpawnManager : MonoBehaviour
     
     IEnumerator SpawnWave8(bool root)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             SpawnAttacker_RedSlime(1);
             SpawnAttacker_RedSlime(3);
@@ -213,7 +215,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnWave9(bool root)
     {
         StartCoroutine(SpawnWave8(false));
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             SpawnAttacker_RedSlime(4);
             yield return new WaitForSeconds(0.5f);
@@ -231,6 +233,125 @@ public class SpawnManager : MonoBehaviour
             SpawnAttacker_RedSlime(2);
             SpawnAttacker_RedSlime(3);
             yield return new WaitForSeconds(0.2f);
+        }
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave11(bool root)
+    {
+        StartCoroutine(SpawnWave4(false));
+        yield return new WaitForSeconds(0.25f);
+        StartCoroutine(SpawnWave6(false));
+        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < 20; i++)
+        {
+            SpawnAttacker_YellowSlime(3);
+            yield return new WaitForSeconds(0.5f);
+        }
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave12(bool root)
+    {
+        StartCoroutine(SpawnWave11(false));
+        for (int i = 0; i < 20; i++)
+        {
+            SpawnAttacker_BlackSlime(1);
+            SpawnAttacker_BlackSlime(2);
+            SpawnAttacker_BlackSlime(3);
+            SpawnAttacker_BlackSlime(4);
+            yield return new WaitForSeconds(0.25f);
+        }
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave13(bool root)
+    {
+        StartCoroutine(SpawnWave12(false));
+        yield return new WaitForSeconds(5f);
+        for (int i = 0; i < 20; i++)
+        {
+            SpawnAttacker_RedSlime(4);
+            SpawnAttacker_OrangeSlime(3);
+            SpawnAttacker_BlackSlime(1);
+            yield return new WaitForSeconds(0.5f);
+        }
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave14(bool root)
+    {
+        StartCoroutine(SpawnWave12(false));
+        yield return new WaitForSeconds(0.25f);
+        StartCoroutine(SpawnWave12(false));
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave15(bool root)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnAttacker_Jet(1);
+            yield return new WaitForSeconds(1f);
+        }
+        rootAction(root);
+    }
+    
+    
+    IEnumerator SpawnWave16(bool root)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            StartCoroutine(SpawnWave14(false));
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(SpawnWave15(false));
+            yield return new WaitForSeconds(5f);
+
+        }
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave17(bool root)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            StartCoroutine(SpawnWave16(false));
+            yield return new WaitForSeconds(20f);
+        }
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave18(bool root)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                SpawnAttacker_Jet(1);
+                SpawnAttacker_Jet(2);
+                SpawnAttacker_Jet(3);
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave19(bool root)
+    {
+        StartCoroutine(SpawnWave17(false));
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(SpawnWave18(false));
+        rootAction(root);
+    }
+    
+    IEnumerator SpawnWave20(bool root)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            StartCoroutine(SpawnWave19(false));
+            yield return new WaitForSeconds(100f);
         }
         rootAction(root);
     }
@@ -259,6 +380,17 @@ public class SpawnManager : MonoBehaviour
     private void SpawnAttacker_BlackSlime(int spawnerNode)
     {
         GameObject temp = Instantiate(slimeBlack, NodeToSpawner(spawnerNode).position, Quaternion.identity);
+        temp.GetComponent<AttackerAi>().nodeIndex = NodeToIndex(spawnerNode);
+    }
+    private void SpawnAttacker_OrangeSlime(int spawnerNode)
+    {
+        GameObject temp = Instantiate(slimeOrange, NodeToSpawner(spawnerNode).position, Quaternion.identity);
+        temp.GetComponent<AttackerAi>().nodeIndex = NodeToIndex(spawnerNode);
+    }
+    
+    private void SpawnAttacker_YellowSlime(int spawnerNode)
+    {
+        GameObject temp = Instantiate(slimeYellow, NodeToSpawner(spawnerNode).position, Quaternion.identity);
         temp.GetComponent<AttackerAi>().nodeIndex = NodeToIndex(spawnerNode);
     }
 
@@ -332,7 +464,7 @@ public class SpawnManager : MonoBehaviour
         {
             readyToStart = true;
             waveNumber++;
-            waveReward = waveNumber * 5; 
+            waveReward = waveNumber * 2; 
             Debug.Log("Wave reward for wave " + waveNumber + ": " + waveReward);
         }
     }

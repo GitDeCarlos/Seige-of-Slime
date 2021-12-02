@@ -15,6 +15,19 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject gameOverText;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            MoneyManager.GiveMoney(10);
+        }
+    }
+
     public Vector3 GetMouseCameraPosition()
     {
         Vector3 position = new Vector3();
@@ -60,7 +73,8 @@ public class GameManager : MonoBehaviour
         // status 1 means win, status 0 means lose
         if (status == 1)
         {
-            
+            gameOverText.GetComponent<Text>().text = "You Won!";
+            gameOverScreen.SetActive(true);
         }
         else
         {

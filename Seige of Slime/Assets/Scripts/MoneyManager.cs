@@ -8,6 +8,7 @@ public class MoneyManager : MonoBehaviour
 {
     public static int myMoney;
     private int startMoney = 30;
+    private int maxMoney = 999;
 
     public GameObject moneyCounter;
 
@@ -18,6 +19,10 @@ public class MoneyManager : MonoBehaviour
 
     void Update()
     {
+        if (myMoney > maxMoney)
+        {
+            myMoney = maxMoney;
+        }
         moneyCounter.GetComponent<TextMeshProUGUI>().text = "$" + myMoney;
     }
 
